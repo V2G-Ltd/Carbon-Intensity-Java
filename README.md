@@ -8,6 +8,7 @@ If you have Java and Maven installed then simply:
 ```
   cd CarbonIntensity
   mvn install
+  mvn exec:java
 ```
 
 Failing that install the Java SDK and manually download the dependencies:

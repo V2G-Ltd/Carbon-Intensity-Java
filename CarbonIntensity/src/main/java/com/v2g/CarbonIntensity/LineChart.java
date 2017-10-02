@@ -31,6 +31,7 @@ package com.v2g.CarbonIntensity;
 
 
 import java.awt.Color;
+import java.awt.BasicStroke;
 import java.util.Collection;
 
 import org.jfree.chart.ChartFactory;
@@ -114,8 +115,11 @@ public class LineChart extends ApplicationFrame {
         plot.setRangeGridlinePaint(Color.white);
         
         final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        final BasicStroke stroke = new BasicStroke(2.0f);
         renderer.setSeriesShapesVisible(0, false);
+        renderer.setSeriesStroke(0, stroke);
         renderer.setSeriesShapesVisible(1, false);
+        renderer.setSeriesStroke(1, stroke);
         plot.setRenderer(renderer);
 
         // change the auto tick unit selection to integer units only...
