@@ -17,4 +17,15 @@
   		<version>2.8.2</version>
   	</dependency>
   </dependencies>
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>exec-maven-plugin</artifactId>
+	            <configuration>
+	                <mainClass>com.v2g.CarbonIntensity.Main</mainClass>
+	            </configuration>
+	        </plugin>
+	    </plugins>
+	</build>
 </project>
