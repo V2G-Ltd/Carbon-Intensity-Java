@@ -31,11 +31,17 @@ package com.v2g.CarbonIntensity;
 
 
 import java.awt.Color;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.awt.BasicStroke;
 import java.util.Collection;
+import java.util.Date;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.XYPlot;
@@ -92,7 +98,7 @@ public class LineChart extends ApplicationFrame {
         
         // create the chart...
         final JFreeChart chart = ChartFactory.createTimeSeriesChart(
-            title,       // chart title
+            title,       			  // chart title
             "Time",                   // x axis label
             "Intensity",              // y axis label
             dataset,                  // data
@@ -126,8 +132,23 @@ public class LineChart extends ApplicationFrame {
         final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
         // OPTIONAL CUSTOMISATION COMPLETED.
+        saveChart(chart, 800, 600);
                 
         return chart;
-        
+    }
+    
+    public void saveChart(JFreeChart chart, int width, int height)
+    {
+        final DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-hhmmss");
+
+    	String filename = "CarbonIntensity-" + dateFormat.format(new Date()) + ".png";
+		try {
+			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+			ChartUtilities.saveChartAsPNG(new File(filename), chart, width, height);
+			
+		}
+		catch (Exception ex) {
+            ex.printStackTrace();
+		}
     }
 }
